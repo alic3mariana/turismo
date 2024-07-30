@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daltonismo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>TURISMO</h1>
+        <div class="accessibility-controls">
+            <button onclick="changeFontSize(1)">A+</button>
+            <button onclick="changeFontSize(-1)">A-</button>
+            <button onclick="toggleContrast()">Alto Contraste</button>
+        </div>
+    </header>
+    <main>
+        <div class="filter-section">
+            <label for="color-filter">Filtro de Daltonismo:</label>
+            <select id="color-filter">
+                <option value="default">Cores padrão</option>
+                <option value="achromatomaly">Acromatopsia</option>
+                <option value="deuteranomaly">Deuteranomalia</option>
+                <option value="tritanomaly">Tritanomalia</option>
+                <option value="Acromatomia">Acromatomia</option>
+                <option value="Deutenamoralia">Deuteranopia</option>
+                <option value="Protanopia">Protanopia</option>
+            </select>
+        </div>
+        <div class="image-container">
+            <div class="image-item">
+                <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2021/04/turismo.jpg" alt="Descrição da imagem 1" class="filter-image">
+                <p>Turismo é o conjunto que engloba as viagens de pessoas para outras cidades e países, as atividades que elas realizam nos locais de destino bem como suas despesas. O turismo enquanto atividade econômica integra o setor terciário, e vinha apresentando um crescimento expressivo em todo o mundo até o ano de 2019.</p>
+            </div>
+            <div class="image-item">
+                <img src="https://flowpagos.com/wp-content/uploads/elementor/thumbs/Esto-es-lo-que-puedes-lograr-en-el-sector-turismo-con-FlowPagos-930x540-2-p958l2qjuv8zljsvjsqnz7z6gwzwzspwpq6mwh0dys.png" alt="Descrição da imagem 2" class="filter-image">
+                <p>O turismo possui diversas definições que foram sendo elaboradas e se tornando cada vez mais abrangentes na medida em que os estudos a respeito dessa atividade de deslocamento avançaram. Uma das mais utilizadas é a proposta pela Organização Mundial do Turismo (OMT), uma agência especializada da Organização das Nações Unidas (ONU).</p>
+            </div>
+            <div class="image-item">
+                <img src="https://www.paytour.com.br/wp-content/uploads/2022/07/amigos-descobrindo-os-tipos-de-turismo-1024x683.jpg" alt="Descrição da imagem 3" class="filter-image">
+                <p>As atividades turísticas apresentaram um grande crescimento a partir de meados do século XX, principalmente com o advento da globalização e o aperfeiçoamento das tecnologias do transporte e da comunicação, que proporcionaram deslocamentos mais eficazes e a conexão quase imediata com diversas partes do planeta. A intensificação do fluxo de turistas levou à ampliação dos destinos e à diversificação da indústria do turismo, adaptando-se ao período técnico atual.</p>
+            </div>
+        </div>
+        <p>Referências: <a href="https://mundoeducacao.uol.com.br/geografia/turismo.htm">GUIA DE TURISMO</a></p>
+    </main>
+    <footer>
+        Desenvolvido por Mariana Alice 
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Variável para armazenar o tamanho da fonte
+        let currentFontSize = 16; // Tamanho inicial da fonte em pixels
+
+        // Função para alterar o tamanho da fonte
+        function changeFontSize(amount) {
+            currentFontSize += amount;
+            document.body.style.fontSize = currentFontSize + 'px';
+
+            // Aumenta a fonte de todos os elementos da página
+            const allElements = document.body.querySelectorAll('*');
+            allElements.forEach(el => {
+                el.style.fontSize = currentFontSize + 'px';
+            });
+        }
+
+        // Função para alternar contraste
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        // Código existente para filtros de daltonismo
+        document.getElementById('color-filter').addEventListener('change', function() {
+            const filterClass = this.value;
+            const images = document.querySelectorAll('.filter-image');
+            images.forEach(img => {
+                img.className = 'filter-image';
+                if (filterClass !== 'default') {
+                    img.classList.add(filterClass);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
